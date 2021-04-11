@@ -1,4 +1,4 @@
 baseURL = "https://robertjamesharrison.co.uk/"
 languageCode = "en-gb"
 title = "Rob Harrison"
-theme = "hugo-PaperMod"
+theme = "PaperMod"
