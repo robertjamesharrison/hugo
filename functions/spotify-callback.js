@@ -2,7 +2,7 @@ var stateKey = 'spotify_auth_state';
 
 var fetch = require('node-fetch');
 
-var redirect_uri = 'http://localhost:8889/.netlify/functions/spotify-callback'; // Your redirect uri
+var redirect_uri = `${process.env.BASE_URL}/.netlify/functions/spotify-callback`; // Your redirect uri
 
 exports.handler = async function(event, context) {
     // your application requests refresh and access tokens
@@ -46,6 +46,8 @@ exports.handler = async function(event, context) {
             'Authorization': 'Basic ' + (new Buffer(process.env.SPOTIFY_CLIENT_ID + ':' + process.env.SPOTIFY_CLIENT_SECRET).toString('base64'))
         }
     });
+
+    console.log(context.clientContext);
 
     const data = await response.json();
 

@@ -1,6 +1,6 @@
 var querystring = require('querystring');
 
-var redirect_uri = 'http://localhost:8889/.netlify/functions/spotify-callback'; // Your redirect uri
+var redirect_uri = `${process.env.BASE_URL}/.netlify/functions/spotify-callback`; // Your redirect uri
 
 /**
  * Generates a random string containing numbers and letters
@@ -20,6 +20,8 @@ var redirect_uri = 'http://localhost:8889/.netlify/functions/spotify-callback'; 
 var stateKey = 'spotify_auth_state';
 
 exports.handler = async function(event, context) {
+    console.log(context);
+  
     const state = generateRandomString(16);
     const cookie = `${stateKey}=${state}`;
 
