@@ -6,4 +6,4 @@ draft: false
 
 Trying out adding a react component
 
-{{< spotify >}}
+{{< click-count >}}
