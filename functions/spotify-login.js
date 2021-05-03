@@ -20,13 +20,11 @@ var redirect_uri = `${process.env.BASE_URL}/.netlify/functions/spotify-callback`
 var stateKey = 'spotify_auth_state';
 
 exports.handler = async function(event, context) {
-    console.log(context);
-  
     const state = generateRandomString(16);
     const cookie = `${stateKey}=${state}`;
 
     // your application requests authorization
-    const scope = 'user-read-private user-read-email';
+    const scope = 'user-read-private user-read-email user-top-read';
 
     const location = 'https://accounts.spotify.com/authorize?' +
         querystring.stringify({

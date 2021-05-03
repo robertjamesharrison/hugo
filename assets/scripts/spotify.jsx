@@ -7,13 +7,17 @@ function Spotify() {
         const response = await fetch("/.netlify/functions/spotify-login");
 
         console.log(response);
+
+        const data = await response.json();
+
+        console.log(data);
     }
   
     return (
       <div>
-        <button onClick={getStats}>
+        <a href="/.netlify/functions/spotify-login">
           Get my stats
-        </button>
+        </a>
         {isClicked && <div>Stats requested</div>}
       </div>
     );

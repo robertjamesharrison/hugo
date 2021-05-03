@@ -47,8 +47,6 @@ exports.handler = async function(event, context) {
         }
     });
 
-    console.log(context.clientContext);
-
     const data = await response.json();
 
     console.log(data);
@@ -67,6 +65,18 @@ exports.handler = async function(event, context) {
     const profileData = await profileResponse.json();
 
     console.log(profileData);
+
+    const artistsResponse = await fetch('https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=50', {
+    	method: 'get',
+    	headers: { 
+            'Authorization': 'Bearer ' + access_token,
+            'Accept': 'application/json'
+        }
+    });
+
+    const artistData = await artistsResponse.json();
+
+    console.log(artistData);
     
     return {
         statusCode: 200,
